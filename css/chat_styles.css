@@ -1,0 +1,41 @@
+.round_img{
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+}
+
+.img_small_pic{
+    /*padding: 2px;*/
+    /*float:left;*/
+/*    height:50px;
+    width:8%;*/
+    /*margin:1%;*/
+    height:40px;
+    width:40px;
+}
+
+.post_comments{
+    background-color:#ddd;
+    /*box-shadow: 5px 5px;*/
+}
+
+.reply_div{
+    margin:0px;
+    padding:0px;
+    word-wrap: break-word;
+    text-align:justify;
+    text-transform:capitalize
+}
+
+.reply_name{
+    font-weight:bold;
+    display:inline-block;
+    font-size:1em;
+    margin:0px;
+    padding:0px;
+}
+
+.reply_date{
+    color: #ccc;
+    font-size: 0.7em;
+}

@@ -1,0 +1,15 @@
+[16-Nov-2017 16:38:46 America/New_York] PHP Fatal error:  Uncaught exception 'Google_Service_Exception' with message 'Error calling GET https://www.googleapis.com/oauth2/v2/userinfo: (500) {
+ "error": {
+  "code": 500,
+  "message": null
+ }
+}
+' in /home/faanendy/public_html/g/libraries/Google/Http/REST.php:110
+Stack trace:
+#0 /home/faanendy/public_html/g/libraries/Google/Http/REST.php(62): Google_Http_REST::decodeHttpResponse(Object(Google_Http_Request), Object(Google_Client))
+#1 [internal function]: Google_Http_REST::doExecute(Object(Google_Client), Object(Google_Http_Request))
+#2 /home/faanendy/public_html/g/libraries/Google/Task/Runner.php(174): call_user_func_array(Array, Array)
+#3 /home/faanendy/public_html/g/libraries/Google/Http/REST.php(46): Google_Task_Runner->run()
+#4 /home/faanendy/public_html/g/libraries/Google/Client.php(593): Google_Http_REST::execute(Object(Google_Client), Object(Google_Http_Request))
+#5 /home/faanendy/public_html/g/libraries/Google/Service/Resource.php(237): Google_Client->execute(Object(Google_Http_Request))
+#6 /home/faanendy/public_h in /home/faanendy/public_html/g/libraries/Google/Http/REST.php on line 110

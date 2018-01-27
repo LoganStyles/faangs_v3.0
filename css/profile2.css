@@ -1,0 +1,52 @@
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+#pro{
+	margin-top:2em;
+	padding:0px;
+}
+#pro li span{
+	margin:5px;
+	display:inline-block;
+}
+#pro li a{
+	
+    display: block;
+    width: 300px;
+	height:50px;
+	color: #000000;
+	//font-weight:bold;
+	//font-size:18px;
+	margin:5px;
+	border-bottom: 1px solid #fff;
+
+}
+#pro li a:hover {
+    background-color: #111;
+	color:white;
+}
+.t{
+border-radius:10px;
+background:white;
+//height:720px;
+margin:30px;
+//border-style:solid;
+ box-shadow: 10px 10px 10px 5px grey;
+ 
+}
