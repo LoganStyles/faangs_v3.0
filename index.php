@@ -6,7 +6,6 @@ require_once("incl/function.php");
 require_once("incl/mail2.php");
 require_once 'incl/header.php';
 ?>
-    
 
     <section class="header3 cid-qHw45zV91Y mbr-fullscreen mbr-parallax-background" id="header3-7">
         <div class="container">
@@ -17,24 +16,6 @@ require_once 'incl/header.php';
                             <div class="content-slider-wrap">
                                 <div>
                                     <div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000">
-                                        <ol class="carousel-indicators">
-                                            <?php
-                                            $slides=$slide_active="";
-                                            $slide_count=0;
-                                                $query4 = "select * from vip order by rand()";
-                                                $res_slides=$res4 = mysql_query($query4);
-
-                                                if (mysql_num_rows($res4) > 0) {
-                                                    while ($res41 = mysql_fetch_array($res4)) {
-                                                        if($slide_count==1){$slide_active="active";}
-
-                                                        $slides.="<li data-target=\"#slider2-s\" class=\"$slide_active\"  data-slide-to=\"$slide_count\"></li>";
-                                                        $slide_count++;$slide_active="";
-                                                    }
-                                                    echo $slides;
-                                                }
-                                            ?>
-                                        </ol>
 
                                         <div class="carousel-inner" role="listbox">
                                             <?php
@@ -54,9 +35,10 @@ require_once 'incl/header.php';
                                                         $slides.="<div class=\"image_wrapper\">";
                                                         $slides.="<img src=\"$slide_image\">";
                                                         $slides.="<div class=\"carousel-caption justify-content-center\">";
-                                                        $slides.="<div class=\"col-10 align-center\">";
+                                                        
+                                                        $slides.="<div class=\"col-12 align-center\">";
                                                         $slides.="<p class=\"lead mbr-text mbr-fonts-style display-7\"></p>";
-                                                        $slides.="</div></div></div></div>";
+                                                        $slides.="</div></div></div><a class=\"btn btn-md btn-primary\" style=\"font-weight:600;color:#000;\" href=\"modelg.php\">BOOK MODELS</a></div>";
                                                         $slides.="</a></div>";
 
                                                         $slide_count++;$slide_active="";
@@ -81,15 +63,15 @@ require_once 'incl/header.php';
                     </section>
                 </div>
 
-                <div class="media-content">
-                    <h1 style="font-weight: 500;" class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1">Share Your Photos Online&nbsp;</h1>
-                    <h3 class="mbr-section-subtitle align-left mbr-white mbr-light pb-3 mbr-fonts-style display-2">&amp; Become<br> The Face of Angels</h3>
+                <div class="media-content" style="padding-top:10% ">
+                    <h3 style="font-weight: 600;font-size: 3rem" class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1">Share Your Photos Online&nbsp;</h3>
+                    <h3 style="font-weight: 600;font-size: 2rem" class="mbr-section-subtitle align-left mbr-white mbr-light pb-3 mbr-fonts-style display-2">&amp; Become<br> The Face of Angels</h3>
                     <div class="mbr-section-text mbr-white pb-3 ">
                         <p class="mbr-text mbr-fonts-style display-5">Become a<strong>
                                  CONTESTANT </strong>now and win<br> <strong>$5000 </strong>CASH PRIZE&nbsp;for the highest vote.</p>
                     </div>
                     <div class="mbr-section-btn"><a class="btn btn-md btn-primary display-4" href="login.php">Join Now</a>
-                        <a class="btn btn-md btn-white-outline display-4" href="login.php">Contest Now</a></div>
+                    </div>
                 </div>
             </div>
         </div>

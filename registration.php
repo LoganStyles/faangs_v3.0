@@ -187,18 +187,19 @@ if (isset($_POST['submit'])) {
             <div class="mbr-white col-lg-6 col-md-7 content-container">
 
             </div>
-            <div class="col-lg-6 col-md-5">
+            <div class="col-lg-6 col-md-5" style="margin-top: 6%;">
                 <div class="form-container">
                     <div class="media-container-column" data-form-type="">
                         <div data-form-alert="" hidden="" class="align-center">
                             Thanks for filling out the form!
                         </div>
-                        <div class="col-lg-6 col-md-5">
+                        <div class="col-12">
                         <?php
                         $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
                         // Render facebook login button
-                        $output = '<a href="' . htmlspecialchars($loginURL) . '"><img class="img-responsive" src="face/images/face2.png"></a>';
-                        echo $output;
+                        $output = '<button href="' . htmlspecialchars($loginURL) . '">'
+                                        . '<button class="loginBtn loginBtn--facebook">Sign in with Facebook</button></a>';
+                                echo $output;
                         
                         if (!empty($_SESSION['userdetails'])) {
                             header('Location: index.php');
@@ -206,16 +207,13 @@ if (isset($_POST['submit'])) {
                         }
                         $loginUrl = $instagram->getLoginUrl();
                         //echo "<a class=\"button\" href=\"$loginUrl\">Sign in with Instagram</a>";
-                        ?>
-                        <img src="images/reg.png" class="img-responsive goo"/>
-                        <?php
-                        require_once("g/lo.php");
                         
-                    
-                    ?>	
+                        require_once("g/lo.php");
+                         ?>	
+                            <img src="images/reg.png" class="img-responsive goo"/>
                         </div>
                         
-                        <form class="block mbr-form" action="" method="post" data-form-title="">
+                        <form class="block mbr-form" action="" method="post" data-form-title="" style="margin-top: 3%">
                             <?php
                                     if (isset($_SESSION["password"])) {
                                         $password = $_SESSION["password"];
@@ -265,6 +263,42 @@ if (isset($_POST['submit'])) {
                                         $waist = "";
                                     }
                                     
+                                    if (isset($_SESSION["shoe"])) {
+                                        $shoe = $_SESSION["shoe"];
+                                    } else {
+                                        $shoe = "";
+                                    }
+                                    
+                                    if (isset($_SESSION["hip"])) {
+                                        $hip = $_SESSION["hip"];
+                                    } else {
+                                        $hip = "";
+                                    }
+                                    
+                                    if (isset($_SESSION["chest"])) {
+                                        $chest = $_SESSION["chest"];
+                                    } else {
+                                        $chest = "";
+                                    }
+                                    
+                                     if (isset($_SESSION["bank"])) {
+                                        $bank = $_SESSION["bank"];
+                                    } else {
+                                        $bank = "";
+                                    }
+                                    
+                                    if (isset($_SESSION["accname"])) {
+                                        $accname = $_SESSION["accname"];
+                                    } else {
+                                        $accname = "";
+                                    }
+                                    
+                                    if (isset($_SESSION["accnumber"])) {
+                                        $accnumber = $_SESSION["accnumber"];
+                                    } else {
+                                        $accnumber = "";
+                                    }
+                                    
                                     
                             ?>
                             <fieldset>
@@ -276,7 +310,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-md-6 multi-horizontal" data-for="fullname">
                                     <div class="form-group">
-                                        <input type="text" class="form-control px-3" name="fullname" value="<?php echo $nam; ?>" data-form-field="Fullname" placeholder="Enter your Fullname" required id="">
+                                        <input type="text" class="form-control px-3" name="fullname" value="<?php echo $nam; ?>" data-form-field="Fullname" placeholder="Enter your Fullname" required id="fullname">
                                     </div>
                                 </div>
                             </div>
@@ -284,7 +318,7 @@ if (isset($_POST['submit'])) {
                             <div class="row">
                                 <div class="col-md-6 multi-horizontal" data-for="username">
                                     <div class="form-group">
-                                        <input type="text" class="form-control px-3" name="username" value="<?php echo $usnam; ?>" data-form-field="Username" placeholder="Enter your username" required id="">
+                                        <input type="text" class="form-control px-3" name="username" value="<?php echo $usnam; ?>" data-form-field="Username" placeholder="Enter your username" required id="username">
                                     </div>
                                 </div>
 
@@ -320,20 +354,20 @@ if (isset($_POST['submit'])) {
                             <div class="row">
                                 <div class="col-md-6 multi-horizontal" data-for="age" style="margin-top: 5%;">
                                     <div class="form-group">
-                                        <input type="text" class="form-control px-3" name="age" value="<?php echo $age;?>" data-form-field="Age" placeholder="Enter your age" required id="age">
+                                        <input type="number" class="form-control px-3" name="age" value="<?php echo $age;?>" data-form-field="Age" placeholder="Enter your age" required id="age">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 multi-horizontal" data-for="email" style="margin-top: 5%;">
                                     <div class="form-group">
-                                        <input type="email" class="form-control px-3" name="email" value="<?php echo $email;?>" data-form-field="Email" placeholder="Enter your email" required id="">
+                                        <input type="email" class="form-control px-3" name="email" value="<?php echo $email;?>" data-form-field="Email" placeholder="Enter your email" required id="email">
                                     </div>
                                 </div>
                             </div>
                             
                             
                             <div class="row">
-                                <div class="col-md-6 multi-horizontal" data-for="gender" style="margin-top: 5%;">
+                                <div class="col-md-12 multi-horizontal" data-for="gender" style="margin-top: 5%;">
                                     <div class="form-group" style="color: #fff;">
                                         <label for="gender" >GENDER</label>
                                         <?php
@@ -352,9 +386,9 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 multi-horizontal"  data-for="bio">
+                                <div class="col-md-12 multi-horizontal"  data-for="bio">
                                     <div class="form-group">
-                                        <textarea class="form-control px-3" name="bio" data-form-field="Bio" placeholder="Enter brief description about yourself" required id=""></textarea>
+                                        <textarea class="form-control px-3" name="bio" data-form-field="Bio" placeholder="Enter brief description about yourself" required id="bio"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -374,41 +408,38 @@ if (isset($_POST['submit'])) {
                                     </select>
                                 </div>
                                 
-                                <div class="col-md-6 multi-horizontal" data-for="referral" style="margin-top: 5%;">
-                                    
-                                </div>
                             </div>
                             </fieldset>
                             
-                             <fieldset>
-                                 <legend style="color: #fff;text-align: center;">Model Info</legend>
+                             <fieldset style="margin-top: 3%;">
+                                 <legend style="color: #fff;text-align: center;">MODEL INFO</legend>
                              <div class="row">
-                                 <div class="col-md-6 multi-horizontal" data-for="model" style="margin-top: 5%;color: #fff;">
+                                 <div class="col-md-6 multi-horizontal" data-for="model" style="color: #fff;">
                                      <?php
                                         if (isset($_SESSION["model"]) and $_SESSION["model"] == 'Male') {
                                             echo "<label class=\"radio-inline\">";
-                                            echo " <input type=\"radio\" name=\"model\" id=\"model\" value=\"YES\" checked>Model</label>";
+                                            echo " <input type=\"radio\" name=\"model\" id=\"model\" onClick=\"chk()\" value=\"YES\" checked>Model</label>";
                                             echo "<label class=\"radio-inline\">";
-                                            echo "<input type=\"radio\" name=\"model2\" id=\"model2\" value=\"NO\">Not Model</label>";
+                                            echo "<input type=\"radio\" name=\"model\" id=\"model2\" onClick=\"chk()\" value=\"NO\">Not Model</label>";
                                         } ELSE {
                                             echo "<label class=\"radio-inline\">";
-                                            echo " <input type=\"radio\" name=\"model\" id=\"model\" value=\"YES\">Model</label>";
+                                            echo " <input type=\"radio\" name=\"model\" id=\"model\" onClick=\"chk()\" value=\"YES\">Model</label>";
                                             echo "<label class=\"radio-inline\">";
-                                            echo "<input type=\"radio\" name=\"model2\" id=\"model2\" value=\"NO\" checked>Not Model</label>";
+                                            echo "<input type=\"radio\" name=\"model\" id=\"model2\" onClick=\"chk()\" value=\"NO\" checked>Not Model</label>";
                                         }
                                         ?>
                                  </div>
                              </div>
-                                 <div id="tes">
+                            <div id="tes">
                              <div class="row">
                                 <div class="col-md-6 multi-horizontal" data-for="height">
                                     <div class="form-group">
-                                        <input type="number" class="form-control px-3" name="height" value="<?php echo $height; ?>" data-form-field="Height" placeholder="Enter Your Height" required="" id="height">
+                                        <input type="number" class="form-control px-3" name="height" value="<?php echo $height; ?>" data-form-field="Height" placeholder="Enter Your Height" id="height">
                                     </div>
                                 </div>
                                 <div class="col-md-6 multi-horizontal" data-for="waist">
                                     <div class="form-group">
-                                        <input type="number" class="form-control px-3" name="waist" value="<?php echo $waist; ?>" data-form-field="Waist" placeholder="Enter your waist size" required="" id="waist">
+                                        <input type="number" class="form-control px-3" name="waist" value="<?php echo $waist; ?>" data-form-field="Waist" placeholder="Enter your waist size" id="waist">
                                     </div>
                                 </div>
                             </div>
@@ -416,12 +447,12 @@ if (isset($_POST['submit'])) {
                              <div class="row">
                                 <div class="col-md-6 multi-horizontal" data-for="shoe">
                                     <div class="form-group">
-                                        <input type="number" class="form-control px-3" name="shoe" value="<?php echo $shoe; ?>" data-form-field="Shoe" placeholder="Enter Your Shoe size" required="" id="shoe-header15-1j">
+                                        <input type="number" class="form-control px-3" name="shoe" value="<?php echo $shoe; ?>" data-form-field="Shoe" placeholder="Enter Your Shoe size" id="shoe">
                                     </div>
                                 </div>
                                 <div class="col-md-6 multi-horizontal" data-for="hip">
                                     <div class="form-group">
-                                        <input type="number" class="form-control px-3" name="hip" value="<?php echo $hip; ?>" data-form-field="HIp" placeholder="Enter your hip size" required="" id="hip-header15-1j">
+                                        <input type="number" class="form-control px-3" name="hip" value="<?php echo $hip; ?>" data-form-field="HIp" placeholder="Enter your hip size" id="hip">
                                     </div>
                                 </div>
                             </div>
@@ -429,37 +460,37 @@ if (isset($_POST['submit'])) {
                              <div class="row">
                                 <div class="col-md-6 multi-horizontal" data-for="chest">
                                     <div class="form-group">
-                                        <input type="number" class="form-control px-3" name="chest" value="<?php echo $chest; ?>" data-form-field="Chest" placeholder="Enter Your Chest" required="" id="chest-header15-1j">
+                                        <input type="number" class="form-control px-3" name="chest" value="<?php echo $chest; ?>" data-form-field="Chest" placeholder="Enter Your Chest"  id="chest">
                                     </div>
                                 </div>
                                 <div class="col-md-6 multi-horizontal" data-for="shoulder">
                                     <div class="form-group">
-                                        <input type="number" class="form-control px-3" name="shoulder" value="<?php echo $hip; ?>" data-form-field="Shoulder" placeholder="Enter your shoulder size" required="" id="shoulder-header15-1j">
+                                        <input type="number" class="form-control px-3" name="shoulder" value="<?php echo $shoulder; ?>" data-form-field="Shoulder" placeholder="Enter your shoulder size" id="shoulder">
                                     </div>
                                 </div>
                             </div>
-                                 </div>
-                                 </fieldset>
+                           </div>
+                           </fieldset>
                              
-                             <fieldset id="third">
-                                    <legend style="color: #fff;text-align: center;">Account information</legend>
+                             <fieldset id="third" style="margin-top: 3%;">
+                                    <legend style="color: #fff;text-align: center;">ACCOUNT INFORMATION</legend>
                                     <div class="row">
                                 <div class="col-md-6 multi-horizontal" data-for="bank">
                                     <div class="form-group">
-                                        <input type="text" class="form-control px-3" name="bank" value="<?php echo $bank; ?>" data-form-field="Bank" placeholder="Enter Your Bank Name" required="" id="bank">
+                                        <input type="text" class="form-control px-3" name="bank" value="<?php echo $bank; ?>" data-form-field="Bank" placeholder="Enter Your Bank Name" required id="bank">
                                     </div>
                                 </div>
                                 <div class="col-md-6 multi-horizontal" data-for="accname">
                                     <div class="form-group">
-                                        <input type="text" class="form-control px-3" name="accname" value="<?php echo $accname; ?>" data-form-field="Accname" placeholder="Enter your account name" required="" id="accname">
+                                        <input type="text" class="form-control px-3" name="accname" value="<?php echo $accname; ?>" data-form-field="Accname" placeholder="Enter your account name" required id="accname">
                                     </div>
                                 </div>
                             </div>
                                     
                             <div class="row">
-                                <div class="col-md-6 multi-horizontal" data-for="accnumber">
+                                <div class="col-md-12 multi-horizontal" data-for="accnumber">
                                     <div class="form-group">
-                                        <input type="text" class="form-control px-3" name="accno" value="<?php echo $accnumber; ?>" data-form-field="Accnumber" placeholder="Enter Your Account Number" required="" id="accno">
+                                        <input type="text" class="form-control px-3" name="accno" value="<?php echo $accnumber; ?>" data-form-field="Accnumber" placeholder="Enter Your Account Number" required id="accno">
                                     </div>
                                 </div>
                             </div>     
@@ -478,7 +509,7 @@ if (isset($_POST['submit'])) {
 
 </section>
 
-<script type ="text/javascript" src="css/form.js"></script>
+<script type ="text/javascript" src="js/form.js"></script>
 <script type="text/javascript" src="js/cou.js"></script>
         
 <?php

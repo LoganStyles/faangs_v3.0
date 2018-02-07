@@ -2,6 +2,7 @@
 <html >
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="30000">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.6.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
@@ -20,6 +21,8 @@
         <link rel="stylesheet" href="assets/datatables/data-tables.bootstrap4.min.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css">
+        <link rel="stylesheet" href="css/post_styles.css">
+        <link rel="stylesheet" href="css/social.css">
     </head>
     
     <body>

@@ -35,6 +35,11 @@
                         <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
                             © Copyright &nbsp;<?php echo date('Y');?>&nbsp; Faangs - All Rights Reserved
                         </p>
+                        <p>
+                            <a href="https://seal.beyondsecurity.com/vulnerability-scanner-verification/faangs.com">
+                                <img src="https://seal.beyondsecurity.com/verification-images/faangs.com/vulnerability-scanner-2.gif" alt="Website Security Test" border="0" />
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

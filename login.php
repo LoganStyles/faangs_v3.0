@@ -12,11 +12,7 @@ if (isset($_POST["submit"])) {
     $username = strtolower($username);
     $password = test_input($_POST['password']);
     $password = md5($password);
-//    echo "<br>";
-//    echo "<br>";echo "<br>";
-//    
-//    echo $username;exit;
-//    echo "<br>";
+
     //sta 2 fro complete,1 for social media, 10 for suspended,0 for unconfirm
     //$query1="select * from registration where username='james' and password='$password' and status=1 or status=2 limit 1";
     $query1 = "select * from registration where username='$username' and password='$password' and (status=1 or 2 or 0 or 10 or 5)";
@@ -130,7 +126,8 @@ if (isset($_GET["id2"])) {
                             <?php
                                 $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
                                 // Render facebook login button
-                                $output = '<a href="' . htmlspecialchars($loginURL) . '"><img src="face/images/face2.png"></a>';
+                                $output = '<a href="' . htmlspecialchars($loginURL) . '">'
+                                        . '<button class="loginBtn loginBtn--facebook">Sign in with Facebook</button></a>';
                                 echo $output;
                                 ?>
                                         <div style="margin-bottom:5px">
@@ -141,6 +138,9 @@ if (isset($_GET["id2"])) {
                         </div>
                         
                         <form class="mbr-form" action="" method="post" data-form-title="Login Form">
+
+                            
+                            
                             <div data-for="username">
                                 <div class="form-group">
                                     <input type="text" class="form-control px-3" name="username" data-form-field="Username" placeholder="Username" required="" id="name-header15-1j">
@@ -151,7 +151,7 @@ if (isset($_GET["id2"])) {
                                     <input type="password" class="form-control px-3" name="password" data-form-field="Password" placeholder="Password" required="" id="email-header15-1j">
                                 </div>
                             </div>
-                            
+
                             <span class="input-group-btn">
                                 <button href="" name="submit" type="submit" class="btn btn-secondary btn-form display-4">SUBMIT</button>                                
                             </span>
