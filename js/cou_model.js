@@ -1,6 +1,6 @@
 function pop(val) {
     //alert (val);
-    check(val);
+    //check(val);
     $.ajax({
         type: "POST",
         url: "state.php",

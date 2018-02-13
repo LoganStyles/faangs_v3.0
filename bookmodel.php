@@ -79,6 +79,7 @@ session_start();
                             company_name,budget,website,purpose,duration)
 					VALUES('$fullname','$username','$email','$phonenumber','$country','$state',"
                                 . "'$gender',0,'$dat','$company_name','$budget','$website','$purpose','$duration')";
+                        //echo $query;exit;
                         $k = mysql_query($query);
 
                         if ($k) {
@@ -216,12 +217,15 @@ session_start();
                                 <div class="form-group col-md-6">
                                     <select class="form-control" id="purpose" name="purpose" >
                                         <option selected value="">SELECT PURPOSE</option>
-                                        <option value="advertisement" <?php if ($purpose == "advertisement") echo 'selected'; ?>>advertisement</option>
-                                        <option value="ushering" <?php if ($purpose == "ushering") echo 'selected'; ?>>ushering</option>
-                                        <option value="runway" <?php if ($purpose == "runway") echo 'selected'; ?>>runway</option>
-                                        <option value="contest" <?php if ($purpose == "contest") echo 'selected'; ?>>contest</option>
-                                        <option value="events" <?php if ($purpose == "events") echo 'selected'; ?>>events</option>
-                                        <option value="others" <?php if ($purpose == "others") echo 'selected'; ?>>others</option>
+                                        <option value="advertisement" <?php if ($purpose == "advertisement") echo 'selected'; ?>>Advertisement</option>
+                                        <option value="ushering" <?php if ($purpose == "ushering") echo 'selected'; ?>>Ushering</option>
+                                        <option value="runway" <?php if ($purpose == "runway") echo 'selected'; ?>>Runway</option>
+                                        <option value="contest" <?php if ($purpose == "contest") echo 'selected'; ?>>Contest</option>
+                                        <option value="events" <?php if ($purpose == "events") echo 'selected'; ?>>Events</option>
+                                        <option value="others" <?php if ($purpose == "others") echo 'selected'; ?>>Others</option>
+                                        <option value="acting" <?php if ($purpose == "acting") echo 'selected'; ?>>Acting</option>
+                                        <option value="video_vixen" <?php if ($purpose == "video_vixen") echo 'selected'; ?>>Video vixen</option>
+                                        
                                     </select>
                                 </div>
 

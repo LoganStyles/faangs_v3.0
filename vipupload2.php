@@ -13,8 +13,6 @@ $msg="";
       </div>
 <div class="col-md-10 t main_body">
 
-    <h3 style="margin-top:5%;TEXT-ALIGN:CENTER;">CREATE CONTEST</h3>
-    
     <div class="col-md-12 t" style="padding-top:100px;">
 
     <!----------------------------------------------------div body---------------------------------------------------->	

@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
         <div class="col-md-12">
             <div class="col-md-7 col-md-offset-4">
                 <h5 style="font-weight:bold;margin-bottom:2em;text-transform:uppercase;font-size:1em;">Change Password</h5>
-                <form method ="post" action=" " class="form-horizontal" role="form">
+                <form method ="post" action="" class="form-horizontal" role="form">
                             <fieldset>
                                 <div class="form-group">
                                     <div class="col-md-7 input-group al">
@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-default col-md-2 al" name="submit">Submit</button>
+                                    <button type="submit" class="btn btn-primary col-md-6 al" name="submit">Submit</button>
 
                                 </div>
 

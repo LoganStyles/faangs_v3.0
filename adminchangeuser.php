@@ -58,7 +58,7 @@ $content.="<input type=\"text\" class=\"form-control\" name=\"balance\" placehol
 $content.="</div></div>";
 $content.="<button type=\"submit\" name=\"submit\" class=\"btn btn-primary col-md-6\">Update</button>";
 $content.="</form></div>";
-
+echo $content;
 ?>
 </div>
         

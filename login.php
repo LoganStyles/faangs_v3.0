@@ -126,8 +126,9 @@ if (isset($_GET["id2"])) {
                             <?php
                                 $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
                                 // Render facebook login button
-                                $output = '<a href="' . htmlspecialchars($loginURL) . '">'
-                                        . '<button class="loginBtn loginBtn--facebook">Sign in with Facebook</button></a>';
+                                $output = '<div style="width:100%; text-align:center;pointer:cursor;color:#fff;" class="login loginBtn loginBtn--facebook"> '
+                                . '<a href="' . htmlspecialchars($loginURL) . '">'
+                                        . 'Sign in with Facebook</a></div>';
                                 echo $output;
                                 ?>
                                         <div style="margin-bottom:5px">

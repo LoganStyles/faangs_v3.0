@@ -6,7 +6,6 @@ $msg="";
 if (isset($_POST['submit'])) {
     $exc = test_input($_POST['exc']);
 
-
     $query1 = "select * from exchange limit 1";
     $k1 = mysql_query($query1);
     if (mysql_num_rows($k1) > 0) {
@@ -16,11 +15,11 @@ if (isset($_POST['submit'])) {
         $result = mysql_query($query2);
         if (mysql_affected_rows() > 0) {
             $nam = "the current dollar rate has been  successfully updated";
-            echo "<div class=\"alert alert-success\">";
-            echo "	<strong>";
-            echo "{$nam}";
-            echo "	</strong>";
-            echo "</div>";
+            $msg.= "<div class=\"alert alert-success\">";
+            $msg.= "	<strong>";
+            $msg.= "{$nam}";
+            $msg.= "	</strong>";
+            $msg.= "</div>";
             header('Refresh:3; url=adminpage.php');
         }
     } else {
@@ -30,11 +29,11 @@ if (isset($_POST['submit'])) {
 
         if ($k) {
             $nam = "Exchange rate have been successfully set";
-            echo "<div class=\"alert alert-success\">";
-            echo "	<strong>";
-            echo "{$nam}";
-            echo "	</strong>";
-            echo "</div>";
+            $msg.= "<div class=\"alert alert-success\">";
+            $msg.= "	<strong>";
+            $msg.= "{$nam}";
+            $msg.= "	</strong>";
+            $msg.= "</div>";
             header('Refresh:3; url=adminpage.php');
         }
     }
@@ -42,8 +41,7 @@ if (isset($_POST['submit'])) {
 ?>
 <?php
 if (isset($_POST['submit2'])) {
-    echo'submit2';
-    exit;
+    
     $name = test_input($_POST['name']);
 
     $start = test_input($_POST['start']);
@@ -53,20 +51,20 @@ if (isset($_POST['submit2'])) {
     $result = mysql_query($query1);
     if (mysql_affected_rows() >= 1) {
         $nam = "<H4>the existing contest has been successfully updated</H4>";
-        echo "<div class=\"alert alert-success\">";
-        echo "	<strong>";
-        echo "{$nam}";
-        echo "	</strong>";
-        echo "</div>";
+        $msg.= "<div class=\"alert alert-success\">";
+        $msg.= "	<strong>";
+        $msg.= "{$nam}";
+        $msg.= "	</strong>";
+        $msg.= "</div>";
         header('Refresh:1; url=index.php');
     } else {
 
         $nam = "<H4>update fail</H4>";
-        echo "<div class=\"alert alert-danger\">";
-        echo "	<strong>";
-        echo "{$nam}";
-        echo "	</strong>";
-        echo "</div>";
+        $msg.= "<div class=\"alert alert-danger\">";
+        $msg.= "	<strong>";
+        $msg.= "{$nam}";
+        $msg.= "	</strong>";
+        $msg.= "</div>";
         header('Refresh:1; url=index.php');
     }
 }
@@ -95,15 +93,17 @@ if (isset($_POST['submit2'])) {
             }
             ?>
         </div>
+    
+    <div id="display_msg"><?php echo $disp_msg;?></div>
 
-    <form>
+    <form method="POST" action="" >
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="exc" placeholder="Enter value of dollar">
             </div>
         </div>
-        <button type="submit" name="submit" class="btn btn-warning col-12 col-md-6 col-lg-4">Submit</button>
+        <button type="submit" name="submit" value="submit" class="btn btn-warning col-12 col-md-6 col-lg-4">Submit</button>
     </form>
 
     

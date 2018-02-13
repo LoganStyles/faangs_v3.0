@@ -10,7 +10,12 @@ if (isset($_POST['submit'])) {
     $username = strtolower($username);
     $password = test_input($_POST['pwd']);
     $password = md5($password);
-
+    
+    $fullname = test_input($_POST['fullname']);
+    $fullname = strtolower($fullname);
+    
+    $email = test_input($_POST['email']);
+    
     $chk = "select * from  subadmin where username='$username'";
 
     $result1 = mysql_query($chk);
@@ -141,14 +146,14 @@ if (isset($_POST['submit'])) {
         $changeupassword = 0;
     }
 
-    $query = " INSERT into  subadmin(username,password,create_contest,payment_request,view_contestant,update_user_data,update_bank_detail,update_model_info,update_like,update_user_fund,suspend_user,delete_user,upload_banner,exchange_rate,
+    $query = " INSERT into  subadmin(username,password,fullname,email,create_contest,payment_request,view_contestant,update_user_data,update_bank_detail,update_model_info,update_like,update_user_fund,suspend_user,delete_user,upload_banner,exchange_rate,
 delete_banner,forum,delete_forum,vip,view_vip,add_vip,delete_vip,message,message_part,message_noti,changeupassword,status)
-values('$username','$password','$ccontest','$payment_request','$view_contestant','$uuser','$ubank','$umodel','$ulike','$uuserfund','$suspend','$duser','$ubanner','$xchang','$dbanner','0',
+values('$username','$password','$fullname','$email','$ccontest','$payment_request','$view_contestant','$uuser','$ubank','$umodel','$ulike','$uuserfund','$suspend','$duser','$ubanner','$xchang','$dbanner','0',
 '0','$vip','$vvip','$avip','$dvip','$msg','$msgpart','$msgnoti','$changeupassword',3)";
     $k = mysql_query($query);
     if ($k) {
         $nam = "<H4>$username account has been successfully created</H4>";
-        echo "<div class=\"alert alert-success\">";
+        echo "<div class=\"alert alert-success\" style=\"margin-left:5%\">";
         echo "	<strong>";
         echo "{$nam}";
         echo "	</strong>";
@@ -157,7 +162,7 @@ values('$username','$password','$ccontest','$payment_request','$view_contestant'
     } else {
         //echo mysql_error();
         $nam = "review your information";
-        echo "<div class=\"alert alert-danger\">";
+        echo "<div class=\"alert alert-danger\" style=\"margin-left:5%\">";
         echo "	<strong>";
         echo "{$nam}";
         echo "	</strong>";

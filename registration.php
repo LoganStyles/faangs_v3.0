@@ -1,4 +1,7 @@
 <?php
+$username='abel';
+//echo "<a target=\"_blank\" href='http://faangs.com/verify.php?user=".$username."'>http://faangs.com/verify.php?user=".$username."</a>";
+//exit;
 ob_start();
 $page="registration";
 require_once 'incl/cons.php';
@@ -10,6 +13,8 @@ require_once 'incl/header.php';
 
 require_once 'ins/instagram.class.php';
 require_once'ins/instagram.config.php';
+
+$msg="";
 
 if (isset($_POST['submit'])) {
     $model = test_input($_POST['model']);
@@ -69,13 +74,14 @@ if (isset($_POST['submit'])) {
     //////////////////////////////////////////////////////////////////////////////////
     if (count($missing) > 0) {
         $nam = "the following detail already exist<br>";
-        echo "<div class=\"alert alert-danger\">";
-        echo "	<strong>";
-        echo "{$nam}";
-        echo "	</strong>";
-        echo "</div>";
+        $msg.= "<div class=\"alert alert-danger\">";
+        $msg.= "<strong>";
+        $msg.= "{$nam}";
+        $msg.= "</strong>";
+        $msg.= "</div>";
+        
         foreach ($missing as $k => $v) {
-            echo $v . "</br>";
+            $msg.= $v . "</br>";
         }
         header('Refresh:3; url=registration.php');
     } else {
@@ -132,15 +138,15 @@ if (isset($_POST['submit'])) {
             $message = "<p>Thanks for signing up!
                         Your account has been created, 
                         </p>
-                        Please click this link to activate your account:http://faangs.com/verify.php?user=$username";
+                        Please click this link to activate your account:<a target=\"_blank\" href='http://faangs.com/verify.php?user=".$username."'>http://faangs.com/verify.php?user=".$username."</a>";
 
             $mail->sendmail("$email", "$message", "$subject");
             $nam = "<H4>AN ACTIVATION LINK HAS BEEN SENT TO YOUR EMAIL</H4>";
-            echo "<div class=\"alert alert-success\">";
-            echo "	<strong>";
-            echo "{$nam}";
-            echo "	</strong>";
-            echo "</div>";
+            $msg.= "<div class=\"alert alert-success\">";
+            $msg.= "	<strong>";
+            $msg.= "{$nam}";
+            $msg.= "	</strong>";
+            $msg.= "</div>";
             unset($_SESSION['password']);
             unset($_SESSION['fullname']);
             unset($_SESSION['usname']);
@@ -162,11 +168,11 @@ if (isset($_POST['submit'])) {
             header('Refresh:3; url=login.php');
         } else {
             $nam = "your form submission was not successful.Try again";
-            echo "<div class=\"alert alert-danger\">";
-            echo "	<strong>";
-            echo "{$nam}";
-            echo "	</strong>";
-            echo "</div>";
+            $msg.= "<div class=\"alert alert-danger\">";
+            $msg.= "	<strong>";
+            $msg.= "{$nam}";
+            $msg.= "	</strong>";
+            $msg.= "</div>";
             header('Refresh:3; url=registration.php');
         }
     }
@@ -190,15 +196,16 @@ if (isset($_POST['submit'])) {
             <div class="col-lg-6 col-md-5" style="margin-top: 6%;">
                 <div class="form-container">
                     <div class="media-container-column" data-form-type="">
-                        <div data-form-alert="" hidden="" class="align-center">
-                            Thanks for filling out the form!
+                        <div data-form-alert="" class="align-center" id="form_alert">
+                            <?php echo $msg; ?>
                         </div>
                         <div class="col-12">
                         <?php
                         $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
                         // Render facebook login button
-                        $output = '<button href="' . htmlspecialchars($loginURL) . '">'
-                                        . '<button class="loginBtn loginBtn--facebook">Sign in with Facebook</button></a>';
+                        $output = '<div style="width:100%; text-align:center;pointer:cursor;color:#fff;" class="login loginBtn loginBtn--facebook"> '
+                                . '<a href="' . htmlspecialchars($loginURL) . '">'
+                                        . 'Sign in with Facebook</a></div>';
                                 echo $output;
                         
                         if (!empty($_SESSION['userdetails'])) {

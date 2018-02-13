@@ -1,8 +1,8 @@
 <?php
 require_once("incl/cons.php");
 require_once("incl/ses.php");
-require_once ("incl/forumheader.php");
 require_once("incl/function.php");
+require_once ("incl/forumheader.php");
 ?>
 
 <style>
@@ -70,7 +70,7 @@ require_once("incl/function.php");
 .dropdown-content a:hover {background-color: #f1f1f1}
 </style>
 
-<div class="container-fluid h-100" style="margin-top:10%;margin-bottom:10%;">
+<div class="container-fluid " style="margin-top:10%;margin-bottom:10%;">
     <div class="row">
         <div class=" col-md-12" style="background:#fec303;">
         <?php
@@ -113,9 +113,8 @@ require_once("incl/function.php");
             </div>
     </div>
     <div class="row " style="margin:0;">
-        <div class="col-12 col-lg-3 col-md-3" style="background:#fff;margin-top:30px;">
-      <!--<div class="row h-100">-->
-          <div class="col-2  d-md-flex bg-faded pt-2 h-100" id="sidebar">
+        <div class="col-12 col-lg-4 col-md-4" style="background:#fff;margin-top:30px;">
+          <div class="  d-md-flex bg-faded pt-2 " id="sidebar">
               <?php 
               $content="";
               if (isset($_SESSION['username']) && ($_SESSION['status'] == 1)) { 
@@ -177,20 +176,7 @@ require_once("incl/function.php");
                         t.style.display = "none";
                     }
 // Close the dropdown menu if the user clicks outside of it
-                </script>
-                  
-<!--                  <li class="nav-item">
-                      <a class="nav-link collapsed" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports</a>
-                      <div class="collapse" id="submenu1" aria-expanded="false">
-                          <ul class="flex-column pl-2 nav">
-                              <li class="nav-item"><a class="nav-link py-0" href="">Orders</a></li>
-                              <li class="nav-item"><a class="nav-link py-0" href="">Orders2</a></li>
-                          </ul>
-                      </div>
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Export</a></li>-->
-             
+              </script>
           </div>
       </div>
         <div class="col-md-8" style="background:#F5F5F5;">

@@ -64,13 +64,13 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     $authUrl = $client->createAuthUrl();
 }
 //Display user info or display login url as per the info we have.
-echo '<div style="width">';
+echo '<div style="width:100%; text-align:center;pointer:cursor;color:#fff;" class="login loginBtn loginBtn--google">';
 if (isset($authUrl)) {
     //show login url
     //echo '<div align="center">';
     //echo '<h3>Login with Google -- Demo</h3>';
     //echo '<div>Please click login button to connect to Google.</div>';
-    echo '<a class="login loginBtn loginBtn--google" href="' . $authUrl . '">Sign in with Google</a>';
+    echo '<a  href="' . $authUrl . '">Sign in with Google</a>';
     //echo '</div>';
 } else {
 
@@ -88,20 +88,15 @@ if (isset($authUrl)) {
     $provider = "google";
     $username = $email;
 
-
-
     $prevQuery = "select * from registration where oauth_provider ='$provider' AND oauth_uid = '$ids' or email='$email'";
     $prevResult = mysql_query($prevQuery);
 
     if (mysql_num_rows($prevResult) > 0) {
 
-        $query = "UPDATE registration SET oauth_provider ='$provider',oauth_uid = '$ids'
-						WHERE 
-						email ='$email'";
+        $query = "UPDATE registration SET oauth_provider ='$provider',oauth_uid = '$ids' WHERE email ='$email'";
     } else {
-
         $query = "INSERT INTO registration(oauth_provider,oauth_uid ,email,fullname,gender,username,status)
-				values('$provider','$ids','$email','$fullname','$gender','$username',1)";
+            values('$provider','$ids','$email','$fullname','$gender','$username',1)";
     }
     $query = mysql_query($query);
     $prevResult = mysql_query($prevQuery);

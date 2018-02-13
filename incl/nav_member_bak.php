@@ -1,6 +1,7 @@
 <?php
 require_once 'incl/cons.php';
-require_once("incl/ses2.php");
+require_once("incl/ses.php");
+require_once ("incl/forumheader.php");
 require_once("incl/function.php");
 //print_r($_SESSION);exit;
 

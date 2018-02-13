@@ -6,6 +6,54 @@ require_once("incl/cons.php");
 require_once("incl/function.php");
 require_once("incl/ses.php");
 require_once("incl/forumheader.php");
+
+function reply($messid) {
+    
+    $na11 = $_SESSION['username'];
+    $forum23 = "select * from forum_comment where parent_id like '$messid.%' order by parent_id asc";
+    $com231 = mysql_query($forum23);
+    $comm_content="";
+    
+    while ($com23 = mysql_fetch_array($com231)) {
+        //get commenter info
+        $user23 = $com23['username'];
+        $comment3 = $com23['comment'];
+        $msg = $com23['parent_id'];
+        $pid3 = $com23['id'];
+        $level = $com23['level'];
+        $level2 = $level + 1;
+        $lev = $com23['level'];
+        
+        $pid3 = $msg . "/" . $pid3;
+        //get profile pics of commenters
+        $qu12 = "select * from picture where username='$user23' and profile='yes'";
+        $comm_pic="";
+        $result102 = mysql_query($qu12);
+        $row301 = mysql_fetch_array($result102);
+        if (mysql_num_rows($result102) > 0) {
+            $comm_pic="img/".$row301['img'];
+        }else{
+            $query102 = "select * from registration where username='$user23'";
+            $result1002 = mysql_query($query102);
+            $row3001 = mysql_fetch_array($result1002);
+            if ($row3001['gender'] == "MALE") {
+                $comm_pic="images/male.png";
+            }else{
+                $comm_pic="images/female.jpg";
+            }
+        }
+        //create content
+        $comm_content.="<div><div class=\"col-3 col-lg-2 col-md-3 contitems\">";
+        $comm_content.="<div class=\"msg_avatar\">";
+        $comm_content.="<img src=\"$comm_pic\" /></div></div>";
+        $comm_content.="<div class=\"col-9 col-lg-7 col-md-6 contitems\">";
+        $comm_content.="<div class=\"u_name\">$user23</div>";
+        $comm_content.="<div class=\"u_date\">$comment3</div>";
+        $comm_content.="</div><div class=\"clearfix\"></div></div>";
+        
+    }
+    return $comm_content;
+}
 ?>
 
 
@@ -110,17 +158,65 @@ require_once("incl/forumheader.php");
                         $time_d= date('h:i A', $times);
                         $display_time=$month.' at '.$time_d;
                         
+                        //get post owner's pic
+                        $query_owner = "select img from picture WHERE username=''";
+//                        $result_owner = mysql_query($query1);
+                        
+                        $query_owner = "select img from picture where username='$user' and profile='yes'";
+                        $post_pic="";
+                        $result102 = mysql_query($query_owner);
+                        $row301 = mysql_fetch_array($result102);
+                        if (mysql_num_rows($result102) > 0) {
+                            $post_pic="img/".$row301['img'];
+                        }else{
+                            $query102 = "select * from registration where username='$user'";
+                            $result1002 = mysql_query($query102);
+                            $row3001 = mysql_fetch_array($result1002);
+                            if ($row3001['gender'] == "MALE") {
+                                $post_pic="images/male.png";
+                            }else{
+                                $post_pic="images/female.jpg";
+                            }
+                        }
+                        
+                        
                         $content.="<div class=\"post_box\"><div>";
                         $content.="<div class=\"col-3 col-lg-2 col-md-3 contitems\">";
                         $content.="<div class=\"user_avatar\">";
-                        $content.="<img src=\"$pic\" /></div></div>";
+                        $content.="<img src=\"$post_pic\" /></div></div>";
                         $content.="<div class=\"col-9 col-lg-7 col-md-6 contitems\">";
                         $content.="<div class=\"u_name\">$user</div>";
                         $content.="<div class=\"u_date\">$display_time</div>";
                         $content.="</div><div class=\"clearfix\"></div></div>";
                         $content.="<div class=\"u_text\">$mess</div>";
                         $content.="<div class=\"user_pimg\">";
-                        $content.="<img src=\"forumimage/$image\" /></div></div>";
+                        $content.="<img src=\"forumimage/$image\" /></div>";
+                        $content.=reply($messid);
+                        //get likes
+                        $ruser = $_SESSION["username"];
+                        $count=0;
+                        $display_likes=$share="";
+                        $que_count = "select * from liketracker where imagename='{$row['id']}'";
+                        $resul = mysql_query($que);
+                        if (mysql_num_rows($resul) > 0) {
+                            $count=mysql_num_rows($resul);                        
+                        }
+                        
+                        if (isset($_SESSION["username"])) {
+                            $que = "select * from liketracker where imagename='{$row['id']}' and member='$ruser'";                            
+                            $resul = mysql_query($que);
+                                if (mysql_num_rows($resul) > 0) {//curr user has already liked
+                                $display_likes=$count."<span   style=\"margin-right:10px;\">&nbsp;Liked</span>";
+                                }else{//curr user has not liked
+                                    $display_likes=$count."<span style=\"margin-right:10px;\">&nbsp;<a class=\"btn btn-secondary\" href=\"chatprocess.php?id2={$row['id']}&&poster=$user&&user=$na1\">Like(s)</a></span>";
+                                }
+                                $share="<span><a  href=\"https://www.facebook.com/sharer/sharer.php?id2={$row['id']}\" target=\"_blank\">  Share on Facebook</a></span>";
+                        }
+                        $content.="<div>$display_likes"." "."$share</div>";
+                        $content.="</div>";
+                        
+                        //get comments
+                        
                 }
                 echo $content;
                 ?>

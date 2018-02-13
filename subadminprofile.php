@@ -26,7 +26,7 @@ $res = mysql_fetch_array($result1);
 
     <h3 style="margin-top:5%;TEXT-ALIGN:CENTER;"><?php echo "{$res['username']}'s privilages"; ?></h3>
     
-    <div class="col-md-8">
+    <div class="col-md-5">
             <?php
             echo "  <form class=\"form-horizontal\" role=\"form\" method=\"post\" action=\"\" enctype=\"multipart/form-data\"/>	
         <fieldset>
@@ -271,6 +271,23 @@ $res = mysql_fetch_array($result1);
             }
             $content.="</tbody></table>";
             echo $content;
+                      
+            
+            ?>
+        </div>
+    
+    <div class="col-md-3">
+            <?php
+                        
+            $query_referrals="SELECT * FROM registration WHERE referral='$username'";
+            $result_refs=  mysql_query($query_referrals);
+            $no_of_refs=  mysql_num_rows($result_refs);
+            
+            $content="<h5>Total Referrals: &nbsp;<strong>$no_of_refs</strong></h5>";
+            
+            echo $content;
+            
+            
             ?>
         </div>
 

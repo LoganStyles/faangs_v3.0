@@ -14,12 +14,7 @@ require_once("incl/participant.php");
             <input type="text" class="form-control" id="title"  name="title" placeholder="Enter title of photo" required>
         </div>
     </div>
-    <!-- <div class="form-group">
-           
-           <div class="col-md-5 col-md-offset-2">
-             <textarea class="form-control" id="description" name="description" placeholder="photo description" required></textarea>
-           </div>
-     </div>-->
+   
     <div class="form-group">
 
         <div class="col-md-5 col-md-offset-2">
@@ -52,7 +47,7 @@ require_once("incl/participant.php");
                 $result1 = mysql_query($query1);
                 $rec = mysql_fetch_array($result1);
                 if ($rec['balance'] >= 2) {
-                    echo" <button type=\"submit\" class=\"btn btn-default\" name=\"submit\">Submit</button>";
+                    echo" <button type=\"submit\" class=\"btn btn-primary\" name=\"submit\">Submit</button>";
                 } else {
                     $nam = "You have insufficient credit";
                     echo "<div class=\"alert alert-danger\">";

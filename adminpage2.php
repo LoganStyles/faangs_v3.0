@@ -17,7 +17,6 @@ if (isset($_POST['submit'])) {
         $query2 = " INSERT into contest(contestname,startdate,enddate,status)values('$name','$start','$end','active')";
 
         $k = mysql_query($query2);
-
         if ($k) {
             
         }
@@ -35,7 +34,7 @@ if (isset($_POST['submit2'])) {
     if (mysql_affected_rows() >= 1) {
         $nam = "<h4>the existing contest has been successfully updated</h4>";        
         $msg.= "<div class=\"alert alert-success\"><strong>{$nam}</strong></div>";
-        header('Refresh:1; url=index.php');
+        //header('Refresh:1; url=index.php');
     } else {
         $nam = "<H4>update fail</H4>";
         $msg.= "<div class=\"alert alert-danger\"><strong>{$nam}</strong></div>";

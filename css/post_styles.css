@@ -52,6 +52,19 @@ and open the template in the editor.
     min-height: 100%;
 }
 
+ .msg_avatar{
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+    overflow: hidden;
+}
+
+ .msg_avatar img{
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .contest .user_image{
     width: 150px;
     height: 150px;

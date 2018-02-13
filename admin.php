@@ -73,8 +73,7 @@ if (isset($_POST["submit"])) {
 
     <div class="container align-right">
         <div class="row">
-                <div class="col-md-5 col-md-offset-4" style="margin-top:5px">
-            
+                <div class="col-md-5 col-md-offset-4" style="margin-top:5px">            
                 </div>
             </div>
         <div class="row">

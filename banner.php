@@ -3,6 +3,7 @@ ob_start();
 require_once("incl/nav_admin.php");
 session_start();
 $_SESSION['msg']="";
+
 ?>
 
 <section id="page-keeper">
@@ -57,7 +58,6 @@ $_SESSION['msg']="";
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-default col-md-5 col-md-offset-2" name="submit">UPLOAD</button>
-
         </div>
     </form>
     

@@ -14,7 +14,7 @@ require_once 'incl/header.php';
                     <section class="carousel slide cid-qHwbCIWtAA" data-interval="false" id="slider2-s">
                         <div class="container content-slider">
                             <div class="content-slider-wrap">
-                                <div>
+                                <div><H3 style="margin-left: 30%;">TOP MODELS</H3>
                                     <div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000">
 
                                         <div class="carousel-inner" role="listbox">
