@@ -56,6 +56,15 @@ function reply($messid) {
 }
 ?>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 <section class="post_section" style="margin-top: 3%;">
     <div class="container-fluid">
@@ -88,6 +97,11 @@ function reply($messid) {
                                 $query1 = "select * from msg where rec='$sessionvariable' and state=0 ";
                                 $result1 = mysql_query($query1);
                                 $aaa = mysql_num_rows($result1);
+                                
+                                if (isset($_SESSION["username"])) {
+                                $na1 = $_SESSION['username'];
+                                $na2 = $row['username'];
+                            }
                                 ?>
 
                                 <div class="btn-group">
@@ -119,11 +133,11 @@ function reply($messid) {
                        <form id="post_form" method="post" action="chatprocess.php?category=<?php echo "{$a}" ?>" enctype="multipart/form-data">
                             <div class="form-group">
                               <label for="post">Post Your Opinion</label>
-                              <textarea class="form-control" id="post" rows="3" required></textarea>
+                              <textarea class="form-control" name="post" id="post" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="test">Upload Photo</label>
-                                <input type="file" class="form-control-file" id="test">
+                                <input type="file" class="form-control-file" id="test" name="file">
                              </div>
                             <button type="submit" class="btn btn-primary pull-right" form="post_form" name="chat">Post</button>
                             <div class="clearfix"></div>
@@ -197,20 +211,25 @@ function reply($messid) {
                         $count=0;
                         $display_likes=$share="";
                         $que_count = "select * from liketracker where imagename='{$row['id']}'";
-                        $resul = mysql_query($que);
+//                        echo $que_count;exit;
+                        
+                        $resul = mysql_query($que_count);
                         if (mysql_num_rows($resul) > 0) {
-                            $count=mysql_num_rows($resul);                        
+                            $count=mysql_num_rows($resul); 
+//                            echo $count;exit;
                         }
                         
                         if (isset($_SESSION["username"])) {
                             $que = "select * from liketracker where imagename='{$row['id']}' and member='$ruser'";                            
                             $resul = mysql_query($que);
                                 if (mysql_num_rows($resul) > 0) {//curr user has already liked
-                                $display_likes=$count."<span   style=\"margin-right:10px;\">&nbsp;Liked</span>";
+                                $display_likes="<span style=\"margin-right:2px;\">$count&nbsp;Liked</span>&nbsp;|&nbsp;";
                                 }else{//curr user has not liked
-                                    $display_likes=$count."<span style=\"margin-right:10px;\">&nbsp;<a class=\"btn btn-secondary\" href=\"chatprocess.php?id2={$row['id']}&&poster=$user&&user=$na1\">Like(s)</a></span>";
+                                    $display_likes="<span style=\"margin-right:2px;\">$count&nbsp;<a class=\"\" href=\"chatprocess.php?id2={$row['id']}&&poster=$user&&user=$na1\">Like(s)</a></span>&nbsp;|&nbsp;";
                                 }
                                 $share="<span><a  href=\"https://www.facebook.com/sharer/sharer.php?id2={$row['id']}\" target=\"_blank\">  Share on Facebook</a></span>";
+                                
+                                $share="<div class=\"fb-share-button\" data-href=\"http://faangs.com/faangs3/chat.php\" data-layout=\"button_count\" data-size=\"small\" data-mobile-iframe=\"true\"><a target=\"_blank\" href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%www.faangs.com%2Ffaangs3%2Fchat.php&amp;src=sdkpreparse\" class=\"fb-xfbml-parse-ignore\">Share</a></div>";
                         }
                         $content.="<div>$display_likes"." "."$share</div>";
                         $content.="</div>";

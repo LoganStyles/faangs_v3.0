@@ -3,7 +3,7 @@
 ob_start();
 require_once("incl/mail2.php");
 require_once("incl/cons.php");
-cont();
+//cont();
 require_once("incl/function.php");
 session_start();
 //require_once("incl/mail2.php");
@@ -11,7 +11,7 @@ $sessionvariable = $_SESSION['username'];
 if (isset($_POST['chat'])) {
     date_default_timezone_set("Africa/Lagos");
     $post = test_input($_POST['post']);
-    $post = strtoupper($post);
+//    $post = strtoupper($post);
     $category = test_input($_GET['category']);
     $category = strtoupper($category);
     $dat = date("y-m-d");

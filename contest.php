@@ -16,7 +16,7 @@ require_once 'incl/forumheader.php';
             $query4 = "select * from picture where username='$contestant'";
             $result4 = mysql_query($query4);
             if (mysql_num_rows($result4) > 0) {
-                header("location:contest2.php?id=$contestant");
+//                header("location:contest2.php?id=$contestant");
             } {
                 $nam = "no record found";
                 echo "<div class=\"alert alert-danger\">";
@@ -195,10 +195,12 @@ require_once 'incl/forumheader.php';
 
                             $content.="<div class=\"testimonials-item contest\"><div class=\"user row\"><div class=\"col-lg-4 col-md-5\">"
                                     . "<div class=\"user_image\">";
-                            $content.="<a href=\"contest2.php?id=$k\"><img src=\"img/{$rec['img']}\"></a></div></div>";
+                            $content.="<a href=\"javascript:;\"><img src=\"img/{$rec['img']}\"></a></div></div>";
+//                            $content.="<a href=\"contest2.php?id=$k\"><img src=\"img/{$rec['img']}\"></a></div></div>";
                             $content.="<div class=\"testimonials-caption col-lg-8 col-md-7\"> ";
                             $content.="<div class=\"user_name mbr-bold mbr-fonts-style align-left pt-3 display-7\">";
-                            $content.="<a href=\"contest2.php?id=$k\"><h5 class=\"card-title\" style=\"text-transform: uppercase\">{$rec['fullname']}</h5></a>";
+                            $content.="<a href=\"javascript:;\"><h5 class=\"card-title\" style=\"text-transform: uppercase\">{$rec['fullname']}</h5></a>";
+//                            $content.="<a href=\"contest2.php?id=$k\"><h5 class=\"card-title\" style=\"text-transform: uppercase\">{$rec['fullname']}</h5></a>";
                             $content.="</div>";
                             $content.=" <div class=\"user_desk mbr-light mbr-fonts-style align-left pt-2 display-7\" style=\"margin-bottom:1%;\">";
                             $content.="{$rec['bio']}";
@@ -207,7 +209,8 @@ require_once 'incl/forumheader.php';
                             $content.="<p style=\"padding: 0 1%;\"><span>STATE:</span><strong><span style=\"padding: 0 1%;\">{$rec['state']}</span></strong></p>";
                             $content.="<p style=\"padding: 0 1%;\"><span>AGE:</span><strong><span style=\"padding: 0 1%;\">{$rec['age']}</span></strong></p>";
                             $content.="<p style=\"padding: 0 1%;\"><span>CATEGORY:</span><strong><span style=\"padding: 0 1%;\">{$rec['category']}</span></strong></p>";
-                            $content.= "<p style=\"padding: 0 1%;\"><a href=\"contest2.php?id=$k\"><span>LIKES:</span><strong><span style=\"padding: 0 1%;\">{$po}</span></strong></p>";
+                            $content.= "<p style=\"padding: 0 1%;\"><a href=\"\"><span>LIKES:</span><strong><span style=\"padding: 0 1%;\">{$po}</span></strong></p>";
+//                            $content.= "<p style=\"padding: 0 1%;\"><a href=\"contest2.php?id=$k\"><span>LIKES:</span><strong><span style=\"padding: 0 1%;\">{$po}</span></strong></p>";
                             $content.= "</div></div></div>";
                             
                         }

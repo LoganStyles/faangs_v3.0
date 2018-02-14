@@ -1,7 +1,6 @@
 <?php
-$username='abel';
-//echo "<a target=\"_blank\" href='http://faangs.com/verify.php?user=".$username."'>http://faangs.com/verify.php?user=".$username."</a>";
-//exit;
+//$username='abel';
+
 ob_start();
 $page="registration";
 require_once 'incl/cons.php';
